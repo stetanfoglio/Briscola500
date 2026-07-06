@@ -241,7 +241,7 @@ export function App() {
             <small>carte</small>
           </div>
           {game.table.length === 0 ? (
-            <div className="empty-table">{tableMessage(game)}</div>
+            <div className="empty-table">{tableMessage(game, mode)}</div>
           ) : (
             game.table.map((played) => <PlayedCardView key={`${played.player}-${played.card.id}`} played={played} mode={mode} />)
           )}
@@ -382,7 +382,7 @@ function illustration(card: Card): string {
   return suitSymbol(card.suit).repeat(Math.min(Number(cardShortRank(card)) || 1, 4));
 }
 
-function tableMessage(game: GameState): string {
+function tableMessage(game: GameState, mode: 'local' | 'online'): string {
   if (game.status === 'finished') {
     return resultText(game);
   }
@@ -392,7 +392,7 @@ function tableMessage(game: GameState): string {
   }
 
   if (game.turn === 'cpu') {
-    return 'La CPU sta pensando...';
+    return mode === 'online' ? 'Avversario sta giocando...' : 'La CPU sta pensando...';
   }
 
   return 'Tocca a te';

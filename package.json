@@ -16,14 +16,14 @@
     "react": "latest",
     "react-dom": "latest",
     "socket.io": "latest",
-    "socket.io-client": "latest"
+    "socket.io-client": "latest",
+    "tsx": "latest"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "concurrently": "latest",
-    "tsx": "latest",
     "typescript": "latest",
     "vite": "latest"
   }

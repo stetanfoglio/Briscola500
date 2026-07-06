@@ -77,3 +77,21 @@ Dopo la build, il server serve sia API realtime che frontend:
 npm run build
 npm start
 ```
+
+## Deploy Railway
+
+Il progetto include `railway.json`, quindi Railway puo usare automaticamente:
+
+```text
+Build Command: npm ci && npm run build
+Start Command: npm start
+```
+
+Passi rapidi:
+
+- Crea un nuovo progetto Railway da GitHub.
+- Seleziona il repository `Briscola500`.
+- Genera un dominio pubblico in `Settings` -> `Networking`.
+- Apri il dominio generato e usa `Crea partita online` / `Entra`.
+
+Il server usa `process.env.PORT`, quindi funziona con la porta assegnata da Railway.

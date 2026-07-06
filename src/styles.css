@@ -373,8 +373,8 @@ button {
 
 .real-card-image {
   width: calc(100% + 16px);
-  height: 100%;
-  margin: 0 -8px;
+  height: calc(100% + 10px);
+  margin: -5px -8px;
   min-height: 0;
   border-radius: 18px;
   display: block;
@@ -383,6 +383,132 @@ button {
   clip-path: inset(0 round 18px);
   image-rendering: -webkit-optimize-contrast;
   transform: translateZ(0);
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    width: calc(100% - 12px);
+    padding: 8px 0;
+  }
+
+  .hero {
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2.65rem;
+  }
+
+  .hero p {
+    font-size: 0.86rem;
+  }
+
+  .online-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .scoreboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .trump-card {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+
+  .score-card,
+  .trump-card,
+  .info-card {
+    border-radius: 18px;
+    padding: 10px;
+  }
+
+  .score-card strong,
+  .trump-card strong {
+    font-size: 1.85rem;
+  }
+
+  .hand-score {
+    margin: 8px auto 6px;
+    padding: 8px;
+  }
+
+  .hand-score b {
+    font-size: 1.55rem;
+  }
+
+  .table-panel {
+    min-height: 390px;
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .cpu-hand,
+  .hand,
+  .table-center {
+    gap: 8px;
+  }
+
+  .hand {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .hand .card {
+    width: 72px;
+    height: 108px;
+    min-width: 72px;
+    min-height: 108px;
+    border-radius: 13px;
+  }
+
+  .table-center .card {
+    width: 84px;
+    height: 126px;
+    min-height: 126px;
+  }
+
+  .cpu-hand .card {
+    width: 42px;
+    height: 60px;
+    min-height: 60px;
+    border-radius: 8px;
+  }
+
+  .cpu-hand .back span {
+    display: none;
+  }
+
+  .cpu-hand .back strong {
+    font-size: 0.95rem;
+  }
+
+  .deck-pile {
+    width: 72px;
+    padding: 7px;
+  }
+
+  .deck-card-back {
+    height: 48px;
+    border-width: 3px;
+    font-size: 0.9rem;
+  }
+
+  .deck-pile strong {
+    font-size: 1.7rem;
+  }
+
+  .real-card-image {
+    width: calc(100% + 20px);
+    height: calc(100% + 14px);
+    margin: -7px -10px;
+    border-radius: 13px;
+    clip-path: inset(0 round 13px);
+  }
 }
 
 .card:has(.real-card-image) {
@@ -712,7 +838,8 @@ button {
   }
 
   .app-shell {
-    width: min(100% - 20px, 680px);
+    width: calc(100% - 20px);
+    max-width: none;
     height: auto;
     min-height: 100vh;
     padding: 18px 0;
@@ -777,4 +904,1089 @@ button {
     width: 118px;
   }
 
+}
+
+@media (pointer: coarse) and (max-width: 1200px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .app-shell,
+  .hero,
+  .online-panel,
+  .scoreboard,
+  .table-panel,
+  .side-grid,
+  .info-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .app-shell {
+    margin: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .table-panel {
+    min-width: 0;
+  }
+}
+
+.app-shell.is-mobile {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  min-height: 0;
+  margin: 0;
+  padding: 4px 6px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "hero"
+    "online"
+    "score"
+    "table"
+    "side";
+  gap: 4px;
+  overflow: hidden;
+}
+
+.app-shell.is-mobile .hero,
+.app-shell.is-mobile .online-panel,
+.app-shell.is-mobile .scoreboard,
+.app-shell.is-mobile .table-panel,
+.app-shell.is-mobile .side-grid,
+.app-shell.is-mobile .info-card {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.app-shell.is-mobile .hero {
+  grid-area: hero;
+  min-height: 0;
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-shell.is-mobile .hero .eyebrow,
+.app-shell.is-mobile .hero p {
+  display: none;
+}
+
+.app-shell.is-mobile .hero h1 {
+  font-size: clamp(1.65rem, 8vw, 2.1rem);
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.app-shell.is-mobile .secondary-button {
+  padding: 6px 9px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.app-shell.is-mobile .online-panel {
+  grid-area: online;
+  min-height: 0;
+  margin-bottom: 0;
+  padding: 5px 7px;
+  border-radius: 12px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.78rem;
+}
+
+.app-shell.is-mobile .scoreboard {
+  grid-area: score;
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  overflow: hidden;
+}
+
+.app-shell.is-mobile .trump-card {
+  grid-column: auto;
+  order: 0;
+}
+
+.app-shell.is-mobile .score-card,
+.app-shell.is-mobile .trump-card {
+  min-width: 0;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.app-shell.is-mobile .score-card span,
+.app-shell.is-mobile .trump-card span,
+.app-shell.is-mobile .score-card small,
+.app-shell.is-mobile .trump-card small {
+  font-size: 0.64rem;
+  line-height: 1.12;
+}
+
+.app-shell.is-mobile .score-card strong,
+.app-shell.is-mobile .trump-card strong {
+  font-size: 1.08rem;
+  margin: 1px 0;
+}
+
+.app-shell.is-mobile .hand-score {
+  border-radius: 10px;
+  margin: 4px 0;
+  padding: 4px;
+}
+
+.app-shell.is-mobile .hand-score b {
+  font-size: 1rem;
+}
+
+.app-shell.is-mobile .table-panel {
+  grid-area: table;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  margin-bottom: 0;
+  padding: 7px;
+  border-radius: 16px;
+  display: grid;
+  grid-template-rows: auto minmax(86px, 1fr) auto;
+  overflow: hidden;
+}
+
+.app-shell.is-mobile .opponent-row,
+.app-shell.is-mobile .hand-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.app-shell.is-mobile .opponent-row > div,
+.app-shell.is-mobile .hand-panel {
+  width: 100%;
+  min-width: 0;
+}
+
+.app-shell.is-mobile .cpu-hand {
+  width: 100%;
+  flex-wrap: nowrap;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.app-shell.is-mobile .cpu-hand .card {
+  width: 36px;
+  height: 52px;
+  min-width: 36px;
+  min-height: 52px;
+  border-radius: 8px;
+}
+
+.app-shell.is-mobile .cpu-hand .back span {
+  display: none;
+}
+
+.app-shell.is-mobile .cpu-hand .back strong {
+  font-size: 0.72rem;
+}
+
+.app-shell.is-mobile .table-center {
+  width: 100%;
+  min-width: 0;
+  padding: 3px 0;
+  gap: 5px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.app-shell.is-mobile .empty-table {
+  max-width: calc(100% - 62px);
+  padding: 7px 10px;
+  overflow: hidden;
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-shell.is-mobile .deck-pile {
+  width: 50px;
+  min-width: 50px;
+  padding: 5px;
+  border-radius: 11px;
+}
+
+.app-shell.is-mobile .deck-card-back {
+  height: 32px;
+  margin-bottom: 4px;
+  border-width: 2px;
+  border-radius: 7px;
+  font-size: 0.7rem;
+}
+
+.app-shell.is-mobile .deck-pile strong {
+  font-size: 1.05rem;
+}
+
+.app-shell.is-mobile .hand-heading > span:last-child {
+  max-width: 52%;
+  overflow: hidden;
+  font-size: 0.78rem;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-shell.is-mobile .hand {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.app-shell.is-mobile .hand .card,
+.app-shell.is-mobile .hand .card:not(:last-child) {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  margin-right: 0;
+  aspect-ratio: 0.64;
+  border-radius: 10px;
+}
+
+.app-shell.is-mobile .table-center .card {
+  width: 72px;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 0.64;
+}
+
+.app-shell.is-mobile .real-card-image {
+  width: calc(100% + 10px);
+  height: calc(100% + 8px);
+  margin: -4px -5px;
+  border-radius: 9px;
+  clip-path: inset(0 round 9px);
+}
+
+.app-shell.is-mobile .side-grid {
+  grid-area: side;
+  margin-bottom: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.app-shell.is-mobile .side-grid .info-card:nth-child(2) {
+  display: none;
+}
+
+.app-shell.is-mobile .info-card {
+  border-radius: 12px;
+  padding: 7px;
+  overflow: hidden;
+}
+
+.app-shell.is-mobile .info-card h2 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.app-shell.is-mobile .info-card p,
+.app-shell.is-mobile .info-card li,
+.app-shell.is-mobile .hint {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.app-shell.is-mobile .hint {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .hand .card {
+    width: clamp(76px, 23vw, 92px);
+    height: auto;
+    min-width: clamp(76px, 23vw, 92px);
+    min-height: 0;
+    aspect-ratio: 0.66;
+  }
+
+  .table-center .card {
+    width: clamp(82px, 24vw, 96px);
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 0.66;
+  }
+
+  .cpu-hand .card {
+    width: 34px;
+    height: 50px;
+    min-height: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    min-height: 0;
+    margin: 0;
+    padding: 4px;
+    display: grid;
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "hero"
+      "online"
+      "score"
+      "table"
+      "side";
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  .hero {
+    grid-area: hero;
+    min-height: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .hero .eyebrow,
+  .hero p {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    letter-spacing: -0.06em;
+  }
+
+  .secondary-button {
+    padding: 7px 10px;
+    font-size: 0.86rem;
+  }
+
+  .online-panel {
+    grid-area: online;
+    min-height: 0;
+    margin: 0;
+    padding: 5px 8px;
+    border-radius: 12px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.78rem;
+  }
+
+  .online-panel strong {
+    font-size: 1rem;
+  }
+
+  .join-room {
+    width: 100%;
+  }
+
+  .join-room input {
+    flex: 1;
+    min-width: 0;
+    padding: 7px 9px;
+  }
+
+  .join-room button {
+    padding: 7px 10px;
+  }
+
+  .scoreboard {
+    grid-area: score;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+  }
+
+  .trump-card {
+    grid-column: auto;
+    order: 0;
+  }
+
+  .score-card,
+  .trump-card {
+    border-radius: 12px;
+    padding: 6px;
+  }
+
+  .score-card span,
+  .trump-card span,
+  .score-card small,
+  .trump-card small {
+    font-size: 0.66rem;
+    line-height: 1.15;
+  }
+
+  .score-card strong,
+  .trump-card strong {
+    font-size: 1.18rem;
+    margin: 1px 0;
+  }
+
+  .hand-score {
+    border-radius: 10px;
+    margin: 4px 0;
+    padding: 4px;
+  }
+
+  .hand-score span {
+    font-size: 0.56rem;
+  }
+
+  .hand-score b {
+    font-size: 1.08rem;
+  }
+
+  .table-panel {
+    grid-area: table;
+    min-height: 0;
+    height: 100%;
+    margin: 0;
+    padding: 7px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  .zone-label {
+    margin-bottom: 3px;
+    font-size: 0.62rem;
+  }
+
+  .opponent-row,
+  .hand-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .cpu-hand,
+  .hand,
+  .table-center {
+    gap: 5px;
+  }
+
+  .cpu-hand {
+    flex-wrap: nowrap;
+  }
+
+  .table-center {
+    padding: 4px 0;
+  }
+
+  .empty-table {
+    padding: 8px 12px;
+    font-size: 0.84rem;
+  }
+
+  .deck-pile {
+    width: 54px;
+    padding: 5px;
+    border-radius: 11px;
+  }
+
+  .deck-card-back {
+    height: 34px;
+    margin-bottom: 4px;
+    border-width: 2px;
+    border-radius: 7px;
+    font-size: 0.7rem;
+  }
+
+  .deck-pile span,
+  .deck-pile small {
+    font-size: 0.62rem;
+  }
+
+  .deck-pile strong {
+    font-size: 1.18rem;
+  }
+
+  .hand {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .hand .card:not(:last-child) {
+    margin-right: clamp(-18px, -4.5vw, -12px);
+  }
+
+  .hand-panel {
+    gap: 5px;
+  }
+
+  .real-card-image {
+    width: calc(100% + 10px);
+    height: calc(100% + 8px);
+    margin: -4px -5px;
+    border-radius: 10px;
+    clip-path: inset(0 round 10px);
+  }
+
+  .side-grid {
+    grid-area: side;
+    margin: 0;
+    display: block;
+  }
+
+  .side-grid .info-card:nth-child(2) {
+    display: none;
+  }
+
+  .info-card {
+    border-radius: 12px;
+    padding: 7px;
+  }
+
+  .info-card h2 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+  }
+
+  .info-card p,
+  .info-card li,
+  .hint {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .meld-actions {
+    gap: 5px;
+  }
+
+  .meld-button {
+    border-radius: 10px;
+    padding: 6px 8px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .meld-button small {
+    display: none;
+  }
+
+  .announcement-banner,
+  .hand-finished {
+    margin: 0;
+    padding: 7px 9px;
+    border-radius: 12px;
+  }
+
+  .announcement-banner strong,
+  .hand-finished strong {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .app-shell {
+    width: 100%;
+    max-width: 100%;
+    padding: 4px 6px;
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    line-height: 0.9;
+    white-space: nowrap;
+  }
+
+  .secondary-button {
+    padding: 6px 9px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .online-panel {
+    padding: 5px 7px;
+  }
+
+  .scoreboard {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .score-card,
+  .trump-card {
+    min-width: 0;
+  }
+
+  .trump-card strong {
+    font-size: 1rem;
+    line-height: 1.05;
+  }
+
+  .table-panel {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .opponent-row > div,
+  .hand-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .cpu-hand {
+    width: 100%;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+
+  .cpu-hand .card {
+    width: 36px;
+    height: 52px;
+    min-width: 36px;
+    min-height: 52px;
+  }
+
+  .cpu-hand .back strong {
+    font-size: 0.72rem;
+  }
+
+  .table-center {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .empty-table {
+    max-width: calc(100% - 70px);
+    padding: 7px 10px;
+    overflow: hidden;
+    font-size: 0.78rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .deck-pile {
+    width: 50px;
+    min-width: 50px;
+  }
+
+  .deck-card-back {
+    height: 32px;
+  }
+
+  .deck-pile strong {
+    font-size: 1.05rem;
+  }
+
+  .hand-heading {
+    width: 100%;
+  }
+
+  .hand-heading > span:last-child {
+    max-width: 52%;
+    overflow: hidden;
+    font-size: 0.82rem;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hand {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+    justify-content: stretch;
+    overflow: hidden;
+  }
+
+  .hand .card,
+  .hand .card:not(:last-child) {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    margin-right: 0;
+    aspect-ratio: 0.64;
+    border-radius: 10px;
+  }
+
+  .table-center .card {
+    width: 72px;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 0.64;
+  }
+
+  .played-stack {
+    max-width: 78px;
+  }
+
+  .played-stack span {
+    font-size: 0.72rem;
+  }
+
+  .real-card-image {
+    width: calc(100% + 10px);
+    height: calc(100% + 8px);
+    margin: -4px -5px;
+    border-radius: 9px;
+    clip-path: inset(0 round 9px);
+  }
+
+  .side-grid {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .info-card {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 980px) and (pointer: coarse) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .app-shell {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    min-height: 0;
+    margin: 0;
+    padding: 4px 6px;
+    display: grid;
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "hero"
+      "online"
+      "score"
+      "table"
+      "side";
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  .hero {
+    grid-area: hero;
+    min-height: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero .eyebrow,
+  .hero p {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 8vw, 2.15rem);
+    line-height: 0.9;
+    white-space: nowrap;
+  }
+
+  .secondary-button {
+    padding: 6px 9px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .online-panel {
+    grid-area: online;
+    min-height: 0;
+    margin: 0;
+    padding: 5px 7px;
+    border-radius: 12px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.78rem;
+  }
+
+  .online-panel strong {
+    font-size: 1rem;
+  }
+
+  .scoreboard {
+    grid-area: score;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  .trump-card {
+    grid-column: auto;
+    order: 0;
+  }
+
+  .score-card,
+  .trump-card {
+    min-width: 0;
+    border-radius: 12px;
+    padding: 6px;
+  }
+
+  .score-card span,
+  .trump-card span,
+  .score-card small,
+  .trump-card small {
+    font-size: 0.64rem;
+    line-height: 1.12;
+  }
+
+  .score-card strong,
+  .trump-card strong {
+    font-size: 1.08rem;
+    margin: 1px 0;
+  }
+
+  .hand-score {
+    border-radius: 10px;
+    margin: 4px 0;
+    padding: 4px;
+  }
+
+  .hand-score span {
+    font-size: 0.54rem;
+  }
+
+  .hand-score b {
+    font-size: 1rem;
+  }
+
+  .table-panel {
+    grid-area: table;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    height: 100%;
+    margin: 0;
+    padding: 7px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-rows: auto minmax(86px, 1fr) auto;
+    overflow: hidden;
+  }
+
+  .zone-label {
+    margin-bottom: 3px;
+    font-size: 0.62rem;
+  }
+
+  .opponent-row,
+  .hand-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .opponent-row > div,
+  .hand-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .cpu-hand {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 5px;
+    overflow: hidden;
+  }
+
+  .cpu-hand .card {
+    width: 36px;
+    height: 52px;
+    min-width: 36px;
+    min-height: 52px;
+    border-radius: 8px;
+  }
+
+  .cpu-hand .back span {
+    display: none;
+  }
+
+  .cpu-hand .back strong {
+    font-size: 0.72rem;
+  }
+
+  .table-center {
+    width: 100%;
+    min-width: 0;
+    padding: 3px 0;
+    gap: 5px;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .empty-table {
+    max-width: calc(100% - 62px);
+    padding: 7px 10px;
+    overflow: hidden;
+    font-size: 0.78rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .deck-pile {
+    width: 50px;
+    min-width: 50px;
+    padding: 5px;
+    border-radius: 11px;
+  }
+
+  .deck-card-back {
+    height: 32px;
+    margin-bottom: 4px;
+    border-width: 2px;
+    border-radius: 7px;
+    font-size: 0.7rem;
+  }
+
+  .deck-pile span,
+  .deck-pile small {
+    font-size: 0.62rem;
+  }
+
+  .deck-pile strong {
+    font-size: 1.05rem;
+  }
+
+  .hand-heading > span:last-child {
+    max-width: 52%;
+    overflow: hidden;
+    font-size: 0.78rem;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hand {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .hand .card,
+  .hand .card:not(:last-child) {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    margin-right: 0;
+    aspect-ratio: 0.64;
+    border-radius: 10px;
+  }
+
+  .table-center .card {
+    width: 72px;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 0.64;
+  }
+
+  .real-card-image {
+    width: calc(100% + 10px);
+    height: calc(100% + 8px);
+    margin: -4px -5px;
+    border-radius: 9px;
+    clip-path: inset(0 round 9px);
+  }
+
+  .side-grid {
+    grid-area: side;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    display: block;
+    overflow: hidden;
+  }
+
+  .side-grid .info-card:nth-child(2) {
+    display: none;
+  }
+
+  .info-card {
+    border-radius: 12px;
+    padding: 7px;
+    overflow: hidden;
+  }
+
+  .info-card h2 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+  }
+
+  .info-card p,
+  .info-card li,
+  .hint {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .hint {
+    display: none;
+  }
 }

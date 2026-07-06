@@ -29,8 +29,23 @@ export function App() {
   const [mode, setMode] = useState<'local' | 'online'>('local');
   const [online, setOnline] = useState<OnlineState | null>(null);
   const [roomInput, setRoomInput] = useState('');
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 900 || window.screen.width < 900);
   const socketRef = useRef<Socket | null>(null);
   const humanMelds = availableMeldPreview(game.humanHand, game.briscola, game.declaredMeldIds);
+
+  useEffect(() => {
+    function updateViewport() {
+      setIsMobile(window.innerWidth < 900 || window.screen.width < 900);
+    }
+
+    updateViewport();
+    window.addEventListener('resize', updateViewport);
+    window.addEventListener('orientationchange', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      window.removeEventListener('orientationchange', updateViewport);
+    };
+  }, []);
 
   useEffect(() => {
     if (mode !== 'local' || game.status !== 'playing' || game.turn !== 'cpu') {
@@ -107,7 +122,7 @@ export function App() {
       return socketRef.current;
     }
 
-    const socket = io(import.meta.env.DEV ? 'http://localhost:3000' : undefined);
+    const socket = io(import.meta.env.DEV ? `http://${window.location.hostname}:3000` : undefined);
     socket.on('gameState', (payload: OnlineState & { game: GameState }) => {
       setMode('online');
       setOnline({ code: payload.code, role: payload.role, waiting: payload.waiting, message: payload.message });
@@ -139,7 +154,7 @@ export function App() {
   }
 
   return (
-    <main className="app-shell">
+    <main className={`app-shell ${isMobile ? 'is-mobile' : ''}`}>
       <section className="hero">
         <div>
           <p className="eyebrow">{mode === 'online' ? 'Partita online' : 'Gioco locale contro CPU'}</p>

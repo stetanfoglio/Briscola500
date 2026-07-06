@@ -83,7 +83,7 @@ npm start
 Il progetto include `railway.json`, quindi Railway puo usare automaticamente:
 
 ```text
-Build Command: npm ci && npm run build
+Build Command: npm install --include=dev --no-audit --no-fund && npm run build
 Start Command: npm start
 ```
 
